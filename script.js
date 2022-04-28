@@ -8,6 +8,8 @@ let green = false;
 let den = 1;
 let w = 300;
 let h = 300;
+
+let isDrawing = false;
 function preload() {
   img = loadImage("./baa.png");
 }
@@ -41,17 +43,20 @@ function clearCanvas() {
 }
 function startPath(e) {
   if (e && typeof e.preventDefault === "function") e.preventDefault();
+  isDrawing = true;
   currentPath = [];
   drawing.push(currentPath);
 }
 
-function endPath() {}
+function endPath() {
+  isDrawing = false;
+}
 
 function draw() {
   pixelDensity(1);
   background(220);
 
-  if (mouseIsPressed) {
+  if (isDrawing) {
     let point = {
       x: mouseX,
       y: mouseY,
@@ -87,7 +92,7 @@ function draw() {
     }
   }
 
-  if ((num / (w * h)) * 100 > 92) {
+  if ((num / (w * h)) * 100 > 93) {
     green = true;
     document.querySelector(".good").classList.add("show");
   }
