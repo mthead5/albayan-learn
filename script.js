@@ -63,7 +63,7 @@ function draw() {
   } else {
     stroke(0);
   }
-  strokeWeight(w / 10);
+  strokeWeight(w / 8);
   noFill();
 
   for (let i = 0; i < drawing.length; i++) {
